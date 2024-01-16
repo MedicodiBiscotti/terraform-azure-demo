@@ -40,6 +40,12 @@ resource "azurerm_mysql_flexible_server" "db-server" {
   administrator_login    = var.admin_user
   administrator_password = var.admin_password
   version                = "8.0.21"
+
+  lifecycle {
+    ignore_changes = [
+      zone
+    ]
+  }
 }
 
 resource "azurerm_mysql_flexible_database" "db" {
